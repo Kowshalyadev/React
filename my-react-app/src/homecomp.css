@@ -1,0 +1,39 @@
+.firstmain{
+    display: flex;
+    justify-content: center;
+}
+.mainbox{
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+    width: 80vw;
+    padding: 45px;
+    margin-top: 20px;
+
+}
+.available{
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    padding: 45px;
+    border-radius: 12px;
+}
+.unavailable{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    padding: 45px;
+    border-radius: 12px;
+    
+}
+.images{
+    display: flex;
+    justify-content: center;
+    height: 10vw;
+    width: 10vw;
+}
+
+.images:hover{
+  
+   height: 30vh;
+}

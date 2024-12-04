@@ -1,0 +1,19 @@
+browse/vdom
+life cycle of components tells us how element behaving from component creation to removal from dom.
+1.mounting state
+        1.1*componetdidmount(){},---it is a method where we can perfrom the side effects
+        side effects are:
+                1.http calls when page load
+                2.dom manipulation when page load
+                3.timer trigger when page load
+                4.event listenrs when page load
+        1.2*getderivedsartesfromprops(){},---it changes the sates based on the props over the time.
+        1.3*render(){},----to insert the jsx inside the dom,we acttually need these method
+        1.4constructor(){}--- it is used to create and intialize the state in class component
+2.updateting state---
+contructor*
+render*
+componetdidupdate(){}--when ever a comp is udated,then method will be excute.
+*shouldcomponetdidupdate(){}--it will decide the component is update or not.This will give the boolean values.
+getsnapshotbeforeupdate(){}--it will containe the information of sates before updating.
+3.unmounting state
