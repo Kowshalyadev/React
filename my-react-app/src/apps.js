@@ -5,7 +5,7 @@ import Aboutus from "./potfolio/Aboutus";
 import Contactus from "./potfolio/contactus";
 
 
-function App() {
+function Apps() {
   let component; // Fix spelling from 'componet' to 'component'
   
   // Dynamically set the component based on the URL path
@@ -31,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default Apps;

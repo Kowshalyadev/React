@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import BasicExample from './potfolio/reactpotfolio';
-// import App from './apps';
-// import UpdatingPhase from './mountingstate/updatingphase';
+import Apps from './apps';
+import UpdatingPhase from './mountingstate/updatingphase';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,15 +18,19 @@ import Profilecard from './profileusingfun/profilecard';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import Parent from './driling/parentCom';
 // import ConditionalRend from './conditinalRend/conditinalRend';
-// import Counter from './conditinalRend/statecomp';
+import Counter from './conditinalRend/statecomp';
 // import Offon from './conditinalRend/bubblesstate/bulbonoff';
-// import Samplefrom from './conditinalRend/samplefrom/froms';
+import Samplefrom from './conditinalRend/samplefrom/froms';
+import EvenOddChecker from './conditinalRend/samplefrom/evevoddform';
+import TodoList from './conditinalRend/samplefrom/Todoapp';
+import Counterfun from './counter/Counter';
+
 // import Accordian from "./accodians/accodiansb";
 // import Imagedisplay from './homeComp';
 // import LifeCycle from './mountingstate/lifecycle';
 // import Calculator from './calculator/calculattors/calculatorss';
 // import Appps from './potfolio/profileui';
-
+import Addcard from './conditinalRend/samplefrom/importaddcard';
 const data=
 [
   {
@@ -108,14 +112,22 @@ root.render(
       alignContent:"center"
       }}></div> */}
     <App />
-    {/* <App
-    /> */}
+    <Apps
+    />
 
      <Table />
     {/* <Home/> */}
     {/* <Imagedisplay /> */}
     {/* <Mains/> */}
     {/* <Profilecard name="kowshi" city="hyd"/> */}
+    <div 
+    style={{
+      display:"flex",
+      flexWrap:"wrap",
+      gap:"10px",
+      // justifyContent:"center",
+      alignContent:"center"
+      }}>
     {data.map((a,b)=>{
       return(
       <div key={b}>
@@ -125,7 +137,42 @@ root.render(
       desc={a.description} 
       info={a.color}
       img={a.image}
-    /></div>)})}
+    /></div>)})}</div>
+    <Counter/>
+     <div 
+    style={{
+      display:"flex",
+      flexWrap:"wrap",
+      gap:"10px",
+      justifyContent:"center",
+      backgroundColor:"green",
+      alignContent:"center"
+      }}>
+     <Samplefrom/>
+     
+     </div>
+      <div 
+    style={{
+      display:"flex",
+      flexWrap:"wrap",
+      gap:"10px",
+      backgroundColor:"yellow",
+      // justifyContent:"center",
+      alignContent:"center"
+      }}><EvenOddChecker/></div>
+    <TodoList/>
+    <UpdatingPhase/><br/><br/>
+    <Addcard/>
+   <div style={{
+      // display:"flex",
+      // flexWrap:"wrap",
+      gap:"10px",
+      backgroundColor:"red",
+      justifyContent:"center",
+      alignContent:"center"
+      }}>
+    <Counterfun/></div>
+   
     {/* <LifeCycle/> */}
     {/* </div> */}
 
@@ -140,7 +187,7 @@ root.render(
 {/* day 28/11 */}
    {/* <Parent/> */}
    {/* <Offon/> */}
-   {/* <Samplefrom/> */}
+  
    {/* <ConditionalRend login="admin"/>
    <Counter/> */}
    {/* <UpdatingPhase/> */}

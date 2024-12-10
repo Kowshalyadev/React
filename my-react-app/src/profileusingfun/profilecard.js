@@ -1,13 +1,13 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Display from "../counter/counterapplication/Display";
+// import Display from "../counter/counterapplication/Display";
 // import airpods from './images/laptop.webp';
 
 
 
 function Profilecard(props){
-    return(< div style={{display:"flex"}}>
+    return(< div >
     {/* <h1>hello {props.name} from {props.city}</h1> */}
     {/* <Button variant="primary">Primary</Button> */}
     <Card style={{ width: '18rem' }}>
