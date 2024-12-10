@@ -26,7 +26,7 @@ import Profilecard from './profileusingfun/profilecard';
 // import LifeCycle from './mountingstate/lifecycle';
 // import Calculator from './calculator/calculattors/calculatorss';
 // import Appps from './potfolio/profileui';
-// import Counter from './counter/counterapplication/counters';
+
 const data=
 [
   {
@@ -146,7 +146,7 @@ root.render(
    {/* <UpdatingPhase/> */}
    {/* <Calculator/> */}
    {/* <Appps/> */}
-   {/* <Counter/> */}
+  
    
   </React.StrictMode>
 );
