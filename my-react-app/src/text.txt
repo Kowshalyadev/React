@@ -1,19 +1,36 @@
 browse/vdom
-life cycle of components tells us how element behaving from component creation to removal from dom.
-1.mounting state
-        1.1*componetdidmount(){},---it is a method where we can perfrom the side effects
-        side effects are:
-                1.http calls when page load
-                2.dom manipulation when page load
-                3.timer trigger when page load
-                4.event listenrs when page load
-        1.2*getderivedsartesfromprops(){},---it changes the sates based on the props over the time.
-        1.3*render(){},----to insert the jsx inside the dom,we acttually need these method
-        1.4constructor(){}--- it is used to create and intialize the state in class component
-2.updateting state---
-contructor*
-render*
-componetdidupdate(){}--when ever a comp is udated,then method will be excute.
-*shouldcomponetdidupdate(){}--it will decide the component is update or not.This will give the boolean values.
-getsnapshotbeforeupdate(){}--it will containe the information of sates before updating.
-3.unmounting state
+life cycle--> of components tells us how element behaving from component creation to removal from dom.
+        1.mounting state
+                1.1*componetdidmount(){},---it is a method where we can perfrom the side effects
+                side effects are:
+                        1.http calls when page load
+                        2.dom manipulation when page load
+                        3.timer trigger when page load
+                        4.event listenrs when page load
+                1.2*getderivedsartesfromprops(){},---it changes the sates based on the props over the time.
+                1.3*render(){},----to insert the jsx inside the dom,we acttually need these method
+                1.4constructor(){}--- it is used to create and intialize the state in class 
+                excute seq-constructor,getderivedsartesfromprops,render,componetdidmount
+        2.updateting state---
+        2.1contructor*
+        2.2render*
+        2.3componetdidupdate(){}--when ever a comp is udated,then method will be excute.
+        2.4*shouldcomponetdidupdate(){}--it will decide the component is update or not.This will give the boolean values.
+        2.5getsnapshotbeforeupdate(){}--it will containe the information of sates before updating.
+        excute seq-
+        3.unmounting state
+
+
+virtual dom--->    it's a in memory-representation of original dom
+                -->when ever component render ,then virtual dom will create/froms.
+                -->*** whenever any new updates occurs,then new virtual dom will forms,and after comparing it with old virtual dom.(diffing)
+                -->it identify the exact changes b/w the doms(old&new virtual dom).
+                -->***react will analysis require changes to be done to the real dom and update.thies process can be called as a reconcilation.
+Pure component-->
+              -->whenever a component avoids unnecessary re-rendering and render only if it's state updates,then it can be called as a pure component.
+              -->unnecessary means,ther is no any change in sate then it should not render.
+              functional componet use--reat.memo()--it use the pure component
+              class component--we will import purecomponent instead of componet.
+Stateless and statefu component-->
+        a Stateless component is a component thet doesn't have it's own state and simply renders with it's propscoming fromthe parent component.
+------>a functional component can be called as a Stateless component,why because it doesn't have own state and own lifecycle method

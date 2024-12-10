@@ -1,12 +1,13 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Display from "../counter/counterapplication/Display";
 // import airpods from './images/laptop.webp';
 
 
 
 function Profilecard(props){
-    return(<>
+    return(< div style={{display:"flex"}}>
     {/* <h1>hello {props.name} from {props.city}</h1> */}
     {/* <Button variant="primary">Primary</Button> */}
     <Card style={{ width: '18rem' }}>
@@ -20,6 +21,6 @@ function Profilecard(props){
       
       <Card.Footer className="text-muted"><Button variant="primary">{props.data.color}</Button></Card.Footer>
     </Card>
-    </>)
+    </div>)
 }
 export default Profilecard
