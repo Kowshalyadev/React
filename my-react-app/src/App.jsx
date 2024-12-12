@@ -39,6 +39,7 @@ function APP() {
     //     <Route path='/contact' element={<Contactus/>}/>
     //   </Routes>
     // </Router>
+    
     <Router>
       <div style={{backgroundColor:"lawngreen",padding:"20px",margin:"auto",display:"flex",justifyContent:"space-evenly"}}> 
         <Link className="links" to="/home">HOME</Link>
@@ -49,8 +50,8 @@ function APP() {
         <Link className='links' to="/addcount">Add Count</Link>
         <Link className='links' to="/incDecr">Addcart Task</Link>
         <Link className='links' to="/counter">Counter</Link>
-
       </div>
+
       <Routes>
         <Route path='/home' element={<Home/>}/>
         <Route path='/aboutus' element={<Aboutus/>}/>
