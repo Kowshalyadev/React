@@ -2,9 +2,11 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import kowshiphoto from "./kowshi_photo.jpeg"
+import kowshiphoto from "./kowshi_photo.jpeg";
+// import { useNavigate } from "react-router-dom";
 
 function Home() {
+  // const navigate=useNavigate()
   return (
     <Container className="mt-5">
       {/* Introduction Section */}

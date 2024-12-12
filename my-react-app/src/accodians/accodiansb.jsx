@@ -10,7 +10,7 @@ function Accordian(props){
         <Accordion.Header>{props.title}</Accordion.Header>
         <Accordion.Body>
   
-       {<img src={props.img} style={{height:"100px"}}/>}
+       <img src={props.img} style={{height:"100px"}}/>
           {/* {props.data.image} */}
         </Accordion.Body>
       </Accordion.Item>

@@ -34,3 +34,15 @@ Pure component-->
 Stateless and statefu component-->
         a Stateless component is a component thet doesn't have it's own state and simply renders with it's propscoming fromthe parent component.
 ------>a functional component can be called as a Stateless component,why because it doesn't have own state and own lifecycle method
+hook-
+useeffect:-->it is a hook which manage a lifecycle of a component and handles/performs the sideeffects in the component.
+1.useeffect hook with only one callback function and without a dependency array.
+syntax: useEffect(()=>{})
+//it will make  to perform side effect in an infinite loop,whenever a props or states changes.//
+useEffect(()=>{},[])-->it execute only page is load//SIMILAR to componetdidmount
+useEffect(()=>{},[state])-->it will execute whenever the dependent state is updated//SIMILAR to componentdidupdate.
+
+Router dom:
+--routing is a mechanism in react js. which can be navigate b/w the differrent view/component within the single page.
+-->most popular library used for archiving router in react is "react-router-dom".
+-->required component for implemen
