@@ -45,4 +45,12 @@ useEffect(()=>{},[state])-->it will execute whenever the dependent state is upda
 Router dom:
 --routing is a mechanism in react js. which can be navigate b/w the differrent view/component within the single page.
 -->most popular library used for archiving router in react is "react-router-dom".
--->required component for implemen
+-->required component for implementing  routing is:
+1.Browser router
+2.route
+3.link
+4.routes
+
+HOOK:
+useParams()is used to access dynamic parameters in the url.
+it allow us to retrieve the values of the parameters and use them in respective component,

@@ -21,7 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Profilecard from './profileusingfun/profilecard';
 // import Apps from './apps';
 // import UpdatingPhase from './mountingstate/updatingphase';
-import APP from './App';
+// import APP from './App';
 // import Table from'./createTable';
 
 // import Accordian from "./accodians/accodiansb";
@@ -33,6 +33,9 @@ import APP from './App';
 // import Cart from './forms/form/cartdisplay';
 // import { BrowserRouter as Router,Route,Routes,Link } from 'react-router-dom';
 // import Cartaddo from './forms/form/carto';
+import UserProfile from './potfolio/UserProfile/Userprofilelist';
+import Webmain from './websites/webmain';
+// import Movielist from './Routerdynamic/movielist';
 
 // const data=
 // [
@@ -106,7 +109,7 @@ import APP from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <APP/>
+    {/* <APP/> */}
     {/* <div 
     style={{
       display:"flex",
@@ -217,6 +220,9 @@ root.render(
     />)})} */}
    {/* <Cart/> */}
    {/* <Cartaddo/> */}
+   <UserProfile/>
+    {/* <Movielist></Movielist> */}
+   <Webmain/>
   </React.StrictMode>
 );
 
