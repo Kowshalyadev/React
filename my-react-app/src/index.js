@@ -33,9 +33,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Cart from './forms/form/cartdisplay';
 // import { BrowserRouter as Router,Route,Routes,Link } from 'react-router-dom';
 // import Cartaddo from './forms/form/carto';
-import UserProfile from './potfolio/UserProfile/Userprofilelist';
-import Webmain from './websites/webmain';
+// import UserProfile from './potfolio/UserProfile/Userprofilelist';
+// import Webmain from './websites/webmain';
 // import Movielist from './Routerdynamic/movielist';
+import Displaycards from './Project/movieproject/moviefinderdata';
 
 // const data=
 // [
@@ -220,9 +221,10 @@ root.render(
     />)})} */}
    {/* <Cart/> */}
    {/* <Cartaddo/> */}
-   <UserProfile/>
+   {/* <UserProfile/> */}
     {/* <Movielist></Movielist> */}
-   <Webmain/>
+   {/* <Webmain/> */}
+   <Displaycards/>
   </React.StrictMode>
 );
 
