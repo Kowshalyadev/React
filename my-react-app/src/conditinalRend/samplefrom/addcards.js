@@ -18,4 +18,4 @@ function ProfileCards({ data }) {
     </Card>
   );
 }
-export default ProfileCards
+export default ProfileCards;

@@ -1,16 +1,15 @@
-// import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import React from "react";
+import Card from "react-bootstrap/Card";
 
-function Maincard({ key,title, imageUrl }) {
+function Maincard({  title,imageUrl, description}) {
   return (
     <Card style={{ width: "18rem", margin: "10px" }}>
-    <Card.Img variant="top" src={imageUrl} alt={title} height={200} width={70}/>
-    <Card.Body>
-      <Card.Title>{title}</Card.Title>
-      <Card.Text>{key}</Card.Text>
-      {/* <Button variant="primary">Learn More</Button> */}
-    </Card.Body>
-  </Card>
+      <Card.Img variant="top" src={imageUrl} alt="Movie poster" />
+      <Card.Body>
+        <Card.Text>Title: {title}</Card.Text>
+        <Card.Text>Release Date: {description}</Card.Text>
+      </Card.Body>
+    </Card>
   );
 }
 

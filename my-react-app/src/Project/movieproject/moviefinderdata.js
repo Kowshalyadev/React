@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Maincard from "./moviecards";
+import Maincard from "./bootstrapcard";
 
 function Displaycards() {
   const [movies, setMovies] = useState([]);

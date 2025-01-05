@@ -36,8 +36,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import UserProfile from './potfolio/UserProfile/Userprofilelist';
 // import Webmain from './websites/webmain';
 // import Movielist from './Routerdynamic/movielist';
-import Displaycards from './Project/movieproject/moviefinderdata';
-
+// import Displaycards from './Project/movieproject/moviefinderdata';
+// import Displaycardss from './Project/movieproject/duplicatedata';
+// import Sampes from './Project/movieproject/sample';
+import Routers from './Project/movieproject/routers';
+// import MovieVedio from './Project/movieproject/mainVedio';
 // const data=
 // [
 //   {
@@ -224,7 +227,11 @@ root.render(
    {/* <UserProfile/> */}
     {/* <Movielist></Movielist> */}
    {/* <Webmain/> */}
-   <Displaycards/>
+   {/* <Displaycards/> */}
+   {/* <Displaycardss/> */}
+   {/* <Sampes/> */}
+   <Routers/>
+   {/* <MovieVedio/> */}
   </React.StrictMode>
 );
 
