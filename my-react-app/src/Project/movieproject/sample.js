@@ -1,52 +1,72 @@
-import React, { useState, useEffect } from "react";
-import Maincard from "./moviecards";
-import soundEffect from "./button-202966.mp3";
-import { Link } from "react-router-dom";
-import Search from "./search.png";
-import "./sample.css"; // Ensure this contains responsive and animation styles
+import React, { useState, useEffect, useCallback } from "react";
+import Maincard from "./moviecards"; // Import the updated Maincard component
+import soundEffect from "./button-202966.mp3"; // Path to your audio file
+import SearchIcon from "./search.png"; // Path to your search icon
+import "./sample.css"; // Your CSS file
 
 function Sampes() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("");
 
+  const url = "https://67767e3a12a55a9a7d0be890.mockapi.io/movies/api/movies";
+
+  const fetchMovies = useCallback(async () => {
+    try {
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        if (response.status === 429) {
+          console.log("Rate limit exceeded, retrying...");
+          setTimeout(fetchMovies, 5000);
+        }
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Fetched Data:", data);
+
+      const moviesData = Array.isArray(data) ? data : data.movies || [];
+      setMovies(moviesData);
+      localStorage.setItem("movies", JSON.stringify(moviesData));
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const cachedMovies = localStorage.getItem("movies");
+    if (cachedMovies) {
+      try {
+        setMovies(JSON.parse(cachedMovies));
+        setLoading(false);
+      } catch {
+        fetchMovies();
+      }
+    } else {
+      fetchMovies();
+    }
+  }, [fetchMovies]);
+
   const onChangeSearchInput = (e) => {
     setSearchInput(e.target.value);
   };
-
-  useEffect(() => {
-    const url = "https://movies-api14.p.rapidapi.com/movies";
-    const options = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "d8348a3f0dmshaff60b54df404b1p1f331fjsn26db868882b9",
-        "x-rapidapi-host": "movies-api14.p.rapidapi.com",
-      },
-    };
-
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.movies && Array.isArray(data.movies)) {
-          setMovies(data.movies);
-        } else {
-          setMovies([]);
-        }
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
 
   const playSound = () => {
     const audio = new Audio(soundEffect);
     audio.play();
   };
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.title &&
-    typeof movie.title === "string" &&
-    movie.title.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase())
+  const filteredMovies = movies.filter(
+    (movie) =>
+      movie.movie_name &&
+      typeof movie.movie_name === "string" &&
+      movie.movie_name.toLowerCase().includes(searchInput.toLowerCase())
   );
+
+  console.log("Filtered Movies:", filteredMovies);
 
   if (loading) {
     return (
@@ -68,24 +88,17 @@ function Sampes() {
           placeholder="Search for a movie..."
           className="search-input"
         />
-        <img
-          src={Search}
-          alt="search icon"
-          className="search-icon"
-          onClick={() => {}}
-        />
+        <img src={SearchIcon} alt="Search icon" className="search-icon" />
       </div>
       <div className="movies-container">
         {filteredMovies.length > 0 ? (
           filteredMovies.map((movie, index) => (
             <div key={index} className="movie-card" onClick={playSound}>
-              <Link to={`/movies/${movie._id}`} className="movie-link">
-                <Maincard
-                  title={movie.title}
-                  imageUrl={movie.poster_path || "default_image_url.jpg"}
-                  description={movie.release_date || "Release date not available"}
-                />
-              </Link>
+              <Maincard
+                title={movie.movie_name || "Unknown Movie"}
+                imageUrl={movie.img_name || "fallback-image-url.jpg"}
+                description={movie.hero_name || "No hero information available"}
+              />
             </div>
           ))
         ) : (

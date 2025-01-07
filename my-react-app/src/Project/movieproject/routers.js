@@ -13,22 +13,20 @@ function Routers() {
 
   // UseEffect to trigger zoom effect for each letter automatically
   useEffect(() => {
-    if (index < "MovieZone".length) {
-      const interval = setInterval(() => {
-        setZoomLetter("MovieZone"[index]); // Zoom each letter in sequence
-        setIndex((prevIndex) => prevIndex + 1);
-      }, 300); // Change the delay for the effect (e.g., 300ms per letter)
+    const interval = setInterval(() => {
+      setZoomLetter("MovieZone"[index]); // Zoom each letter in sequence
+      setIndex((prevIndex) => {
+        if (prevIndex < "MovieZone".length - 1) {
+          return prevIndex + 1;
+        } else {
+          clearInterval(interval); // Clear the interval once all letters have zoomed
+          return prevIndex;
+        }
+      });
+    }, 300); // Change the delay for the effect (e.g., 300ms per letter)
 
-      return () => clearInterval(interval); // Cleanup the interval
-    } else {
-      // Reset zoomLetter and index after all letters have been zoomed
-      const timeout = setTimeout(() => {
-        setZoomLetter(null);
-        setIndex(0);
-      }, 300);
-
-      return () => clearTimeout(timeout); // Cleanup timeout
-    }
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
   }, [index]);
 
   return (
@@ -48,9 +46,9 @@ function Routers() {
               />
               {/* MovieZone with Auto Zoom Effect */}
               <div style={{ display: "flex", fontSize: "1.5rem" }}>
-                {"MovieZone".split("").map((letter, i) => (
+                {"MovieZone".split("").map((letter, index) => (
                   <span
-                    key={i}
+                    key={index}
                     style={{
                       margin: "0 2px",
                       cursor: "pointer",
@@ -100,7 +98,7 @@ function Routers() {
         <Routes>
           <Route path="/home" element={<Displaycardss />} />
           <Route path="/movies" element={<Sampes />} />
-          <Route path="/movies/:_id" element={<MovieDetails />} />
+          <Route path="/movies/:movie_id" element={<MovieDetails />} />
         </Routes>
       </BrowserRouter>
     </>

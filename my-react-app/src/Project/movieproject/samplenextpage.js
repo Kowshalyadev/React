@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 import Maincards from "./moviecards";
 
 function MovieDetails() {
-  const { _id } = useParams();
+  const { movie_id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
-      const url = `https://movies-api14.p.rapidapi.com/movies/${_id}`;
+      const url = `https://movies-api14.p.rapidapi.com/movies/${movie_id}`;
       console.log(url)
       const options = {
         method: "GET",
@@ -37,7 +37,7 @@ function MovieDetails() {
     };
 
     fetchMovieDetails();
-  }, [_id]);
+  }, [movie_id]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -52,12 +52,12 @@ function MovieDetails() {
   }
 
   // Safely extract movie details with fallbacks
-  const { title = "Title not available", release_date = "Release date not available", poster_path } = movie;
-  const imageUrl = poster_path || "default_image_url.jpg";
+  const { movie_name = "Title not available", hero_name = "Release date not available", poster_path } = movie;
+  const img_nam = poster_path || "default_image_url.jpg";
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
-      <Maincards title={title} imageUrl={imageUrl} description={`Release Date: ${release_date}`} />
+      <Maincards title={movie_name} imageUrl={img_nam} description={`Release Date: ${hero_name}`} />
     </div>
   );
 }

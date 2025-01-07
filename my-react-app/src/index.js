@@ -38,8 +38,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Movielist from './Routerdynamic/movielist';
 // import Displaycards from './Project/movieproject/moviefinderdata';
 // import Displaycardss from './Project/movieproject/duplicatedata';
-// import Sampes from './Project/movieproject/sample';
-import Routers from './Project/movieproject/routers';
+import Sampes from './Project/movieproject/sample';
+// import Routers from './Project/movieproject/routers';
 // import MovieVedio from './Project/movieproject/mainVedio';
 // const data=
 // [
@@ -229,8 +229,8 @@ root.render(
    {/* <Webmain/> */}
    {/* <Displaycards/> */}
    {/* <Displaycardss/> */}
-   {/* <Sampes/> */}
-   <Routers/>
+   <Sampes/>
+   {/* <Routers/> */}
    {/* <MovieVedio/> */}
   </React.StrictMode>
 );
