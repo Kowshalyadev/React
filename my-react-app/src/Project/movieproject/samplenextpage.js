@@ -9,7 +9,7 @@ function MovieDetails() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {
+    const fetchMovieDetails = async (movie_id) => {
       const url = `https://movies-api14.p.rapidapi.com/movies/${movie_id}`;
       console.log(url)
       const options = {

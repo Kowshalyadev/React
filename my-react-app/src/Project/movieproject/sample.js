@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Maincard from "./moviecards"; // Import the updated Maincard component
 import soundEffect from "./button-202966.mp3"; // Path to your audio file
 import SearchIcon from "./search.png"; // Path to your search icon
+import { Link } from "react-router-dom";
 import "./sample.css"; // Your CSS file
 
 function Sampes() {
@@ -94,11 +95,14 @@ function Sampes() {
         {filteredMovies.length > 0 ? (
           filteredMovies.map((movie, index) => (
             <div key={index} className="movie-card" onClick={playSound}>
+              <Link to={`/movies/${movie.movie_id}`} className="movie-link">
               <Maincard
                 title={movie.movie_name || "Unknown Movie"}
                 imageUrl={movie.img_name || "fallback-image-url.jpg"}
                 description={movie.hero_name || "No hero information available"}
+                movie_id={movie.movie_id}
               />
+            </Link>
             </div>
           ))
         ) : (

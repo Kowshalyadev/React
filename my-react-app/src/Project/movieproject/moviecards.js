@@ -1,9 +1,9 @@
 import React from "react";
 import Card from "react-bootstrap/Card"; // Ensure react-bootstrap is installed
 
-function Maincard({ title, imageUrl, description }) {
+function Maincard({ title, imageUrl, description ,movie_id}) {
   return (
-    <Card style={{ width: "18rem", margin: "10px" }}>
+    <Card style={{ width: "18rem", margin: "10px" }} key={movie_id}>
       <Card.Img
         variant="top"
         src={imageUrl || "fallback-image-url.jpg"} // Fallback image for missing URLs
