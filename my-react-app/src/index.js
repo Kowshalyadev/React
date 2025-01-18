@@ -41,6 +41,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Sampes from './Project/movieproject/sample';
 import Routers from './Project/movieproject/routers';
 // import MovieVedio from './Project/movieproject/mainVedio';
+// import MovierFinderApp from './Project/movieproject/frontpages';
+// import MovieDetails from './Project/movieproject/samplenextpage';
+// import Signup from './Project/movieproject/signupPage';
+// import MovierFinderApps from './moviefinder/signLoginroutes/signLoginroute';
+
 // const data=
 // [
 //   {
@@ -232,6 +237,11 @@ root.render(
    {/* <Sampes/> */}
    <Routers/>
    {/* <MovieVedio/> */}
+   {/* <MovierFinderApp/> */}
+   {/* <MovieDetails/> */}
+   {/* <Login/> */}
+   {/* <MovierFinderApps/> */}
+   {/* <Signup/> */}
   </React.StrictMode>
 );
 

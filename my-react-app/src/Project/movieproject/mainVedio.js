@@ -10,7 +10,7 @@ function MovieVedio(){
         <video src={movievedio} autoPlay loop muted/>
         <div className="content">
             <h1>Welcome</h1>
-            <p>To my Movie sit.</p>
+            <p>To my Movie site.</p>
         </div>
     </div>
     </>)

@@ -1,101 +1,110 @@
 /* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
-}
-
-.container {
-  text-align: center;
-  padding: 20px;
+.movie-cards-container {
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #1a1a1a; /* Dark background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
+  margin-bottom: 1.5rem;
   font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
 }
 
-/* Search Bar */
 .search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+  margin-bottom: 2rem;
 }
 
 .search-input {
-  width: 300px;
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.3s;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 400px;
 }
 
-.search-input:focus {
-  border-color: #007bff;
-}
-
-.search-icon {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.search-icon:hover {
-  transform: scale(1.1);
-}
-
-/* Movie Cards */
-.movies-container {
+/* Grid and Cards */
+.movie-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
   justify-content: center;
-  margin-top: 20px;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .movie-card {
-  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 280px; /* Set maximum width for each card */
   cursor: pointer;
 }
 
 .movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 px 30px white;
+}
+
+.movie-card .clicked {
   transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+  background-color: #5fc6c6;
 }
 
-/* Loading Spinner */
-.loader-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+/* Image and Details */
+.movie-card-image {
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* Aspect ratio 16:9 */
+  position: relative;
+  overflow: hidden;
+  background-color: #ddd;
 }
 
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #ddd;
-  border-top: 5px solid #007bff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.movie-card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+.movie-card-details {
+  padding: 1rem;
+  text-align: center;
+}
+
+.movie-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .movie-card {
+    max-width: 45%; /* 2 cards per row */
   }
 }
 
-/* No Movies Found */
-.no-movies {
-  font-size: 1.2rem;
-  color: #666;
-  margin-top: 20px;
+@media (max-width: 576px) {
+  .movie-card {
+    max-width: 100%; /* 1 card per row */
+  }
+
+  .search-input {
+    max-width: 100%;
+  }
 }

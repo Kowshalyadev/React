@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Maincards from "./moviecards";
+
+import SampleNextPageCard from "./samplenextpagecard";
 
 function MovieDetails() {
-  const { movie_id } = useParams();
+  const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchMovieDetails = async (movie_id) => {
-      const url = `https://movies-api14.p.rapidapi.com/movies/${movie_id}`;
-      console.log(url)
+    const fetchMovieDetails = async () => {
+      const url = `https://677e5b8794bde1c1252b9a59.mockapi.io/movie/api/movies/${id}`;
+      console.log("urlid",url);  // Log the URL being requested
       const options = {
         method: "GET",
         headers: {
@@ -26,7 +27,7 @@ function MovieDetails() {
           throw new Error(`Error: ${response.statusText}`);
         }
         const data = await response.json();
-        console.log("API Response:", data);
+        console.log("API Response:", data);  // Log the response to check for poster_path
         setMovie(data);
       } catch (err) {
         console.error("Error fetching movie details:", err);
@@ -37,7 +38,7 @@ function MovieDetails() {
     };
 
     fetchMovieDetails();
-  }, [movie_id]);
+  }, [id]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -51,13 +52,14 @@ function MovieDetails() {
     return <div>Movie not found.</div>;
   }
 
-  // Safely extract movie details with fallbacks
-  const { movie_name = "Title not available", hero_name = "Release date not available", poster_path } = movie;
-  const img_nam = poster_path || "default_image_url.jpg";
+  const { movie_name, hero_name,img_name  } = movie;
+  // const img_name = poster_path || "https://example.com/default-image.jpg"; // Fallback image
+
+  // console.log("Image URL:", img_name); // Log the image URL
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
-      <Maincards title={movie_name} imageUrl={img_nam} description={`Release Date: ${hero_name}`} />
+      <SampleNextPageCard title={movie_name} imageUrl={img_name} description={hero_name} />
     </div>
   );
 }

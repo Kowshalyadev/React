@@ -1,85 +1,72 @@
-import React, { useState, useEffect, useCallback } from "react";
-import Maincard from "./moviecards"; // Import the updated Maincard component
-import soundEffect from "./button-202966.mp3"; // Path to your audio file
-import SearchIcon from "./search.png"; // Path to your search icon
+import React, { useEffect, useState } from "react";
+import MaincardSS from "./moviecards.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+import soundEffect from "./button-202966.mp3";
 import { Link } from "react-router-dom";
-import "./sample.css"; // Your CSS file
+import "./sample.css"; // Import custom CSS for styles
 
-function Sampes() {
+function MovieCards() {
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
-  const url = "https://67767e3a12a55a9a7d0be890.mockapi.io/movies/api/movies";
-
-  const fetchMovies = useCallback(async () => {
-    try {
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        if (response.status === 429) {
-          console.log("Rate limit exceeded, retrying...");
-          setTimeout(fetchMovies, 5000);
-        }
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("Fetched Data:", data);
-
-      const moviesData = Array.isArray(data) ? data : data.movies || [];
-      setMovies(moviesData);
-      localStorage.setItem("movies", JSON.stringify(moviesData));
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [zoomedCard, setZoomedCard] = useState(null);
 
   useEffect(() => {
-    const cachedMovies = localStorage.getItem("movies");
-    if (cachedMovies) {
+    const fetchMovies = async () => {
       try {
-        setMovies(JSON.parse(cachedMovies));
+        const response = await fetch(
+          "https://677e5b8794bde1c1252b9a59.mockapi.io/movie/api/movies"
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        const uniqueMovies = Array.from(new Set(data.map((movie) => movie.id)))
+          .map((id) => data.find((movie) => movie.id === id));
+        setMovies(uniqueMovies);
+        setFilteredMovies(uniqueMovies);
+      } catch (error) {
+        setError(error.message);
+      } finally {
         setLoading(false);
-      } catch {
-        fetchMovies();
       }
-    } else {
-      fetchMovies();
-    }
-  }, [fetchMovies]);
+    };
+    fetchMovies();
+  }, []);
 
   const onChangeSearchInput = (e) => {
     setSearchInput(e.target.value);
   };
+
+  useEffect(() => {
+    const filtered = movies.filter((movie) =>
+      movie.movie_name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setFilteredMovies(filtered);
+  }, [searchInput, movies]);
 
   const playSound = () => {
     const audio = new Audio(soundEffect);
     audio.play();
   };
 
-  const filteredMovies = movies.filter(
-    (movie) =>
-      movie.movie_name &&
-      typeof movie.movie_name === "string" &&
-      movie.movie_name.toLowerCase().includes(searchInput.toLowerCase())
-  );
-
-  console.log("Filtered Movies:", filteredMovies);
+  const handleCardClick = (id) => {
+    playSound();
+    setZoomedCard(id === zoomedCard ? null : id); // Toggle zoom
+  };
 
   if (loading) {
-    return (
-      <div className="loader-container">
-        <div className="spinner"></div>
-        <p>Loading movies...</p>
-      </div>
-    );
+    return <p className="loading-text">Loading...</p>;
+  }
+
+  if (error) {
+    return <p className="error-text">Error: {error}</p>;
   }
 
   return (
-    <div className="container">
+    <div className="movie-cards-container">
       <h1 className="title">Movie Finder</h1>
       <div className="search-container">
         <input
@@ -89,28 +76,39 @@ function Sampes() {
           placeholder="Search for a movie..."
           className="search-input"
         />
-        <img src={SearchIcon} alt="Search icon" className="search-icon" />
       </div>
-      <div className="movies-container">
+
+      <div className="row movie-grid">
         {filteredMovies.length > 0 ? (
-          filteredMovies.map((movie, index) => (
-            <div key={index} className="movie-card" onClick={playSound}>
-              <Link to={`/movies/${movie.movie_id}`} className="movie-link">
-              <Maincard
-                title={movie.movie_name || "Unknown Movie"}
-                imageUrl={movie.img_name || "fallback-image-url.jpg"}
-                description={movie.hero_name || "No hero information available"}
-                movie_id={movie.movie_id}
+          filteredMovies.map((movie) => (
+            <div
+              key={movie.id}
+              className={`col-lg-3 col-md-4 col-sm-6 col-12 movie-card ${
+                zoomedCard === movie.id ? "zoomed" : ""
+              }`}
+              onClick={() => handleCardClick(movie.id)}
+            >
+              <Link to={`/movies/${movie.id}`} className="movie-link">
+              <MaincardSS
+                id={movie.movie_id}
+                movie_name={movie.movie_name}
+                img_name={
+                  movie.img_name.startsWith("http")
+                    ? movie.img_name
+                    : `/images/${movie.img_name}`
+                }
               />
-            </Link>
+
+                </Link>
+             
             </div>
           ))
         ) : (
-          <div className="no-movies">No movies found. Try a different search.</div>
+          <p className="no-movies-text">No movies found matching your search.</p>
         )}
       </div>
     </div>
   );
 }
 
-export default Sampes;
+export default MovieCards;
