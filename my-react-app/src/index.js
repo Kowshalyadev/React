@@ -39,7 +39,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Displaycards from './Project/movieproject/moviefinderdata';
 // import Displaycardss from './Project/movieproject/duplicatedata';
 // import Sampes from './Project/movieproject/sample';
-import Routers from './Project/movieproject/routers';
+import AllRouterss from './Project/movieproject/routers';
 // import MovieVedio from './Project/movieproject/mainVedio';
 // import MovierFinderApp from './Project/movieproject/frontpages';
 // import MovieDetails from './Project/movieproject/samplenextpage';
@@ -235,7 +235,7 @@ root.render(
    {/* <Displaycards/> */}
    {/* <Displaycardss/> */}
    {/* <Sampes/> */}
-   <Routers/>
+  <AllRouterss/>
    {/* <MovieVedio/> */}
    {/* <MovierFinderApp/> */}
    {/* <MovieDetails/> */}

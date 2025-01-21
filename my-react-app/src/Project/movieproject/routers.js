@@ -7,7 +7,7 @@ import MovieDetails from "./samplenextpage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-function Routers() {
+function AllRouterss() {
   return (
     <>
       <BrowserRouter>
@@ -94,4 +94,4 @@ function Routers() {
   );
 }
 
-export default Routers;
+export default AllRouterss;

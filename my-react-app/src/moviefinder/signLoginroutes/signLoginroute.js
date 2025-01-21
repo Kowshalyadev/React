@@ -3,7 +3,7 @@ import Signup from "../signup/signup.js";
 import Login from "../login/login.js";
 // import Home from "./home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Routers from './Project/movieproject/routers';
+// import AllRouterss from "../../Project/movieproject/routers.js";
 
 function MovierFinderApps() {
     return (
@@ -12,8 +12,8 @@ function MovierFinderApps() {
      
         <BrowserRouter>
             <Routes>
-                {/* <Route path="/" element={<Routers />} /> */}
-                <Route path="/signup" element={<Signup />} />
+                {/* <Route path="/" element={<AllRouterss />} /> */}
+                <Route path="/" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
             </Routes>
         </BrowserRouter>
