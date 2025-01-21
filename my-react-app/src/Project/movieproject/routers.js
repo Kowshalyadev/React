@@ -1,42 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Movieicon from "./moviecamera.jpg";
 import Sampes from "./sample";
-import Displaycardss from "./duplicatedata";
+import Displaycardss from "./homepage";
 import MovieDetails from "./samplenextpage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function Routers() {
-  const [zoomLetter, setZoomLetter] = useState(null); 
-  const [index, setIndex] = useState(0); 
-
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setZoomLetter("MovieZone"[index]); 
-      setIndex((prevIndex) => {
-        if (prevIndex < "MovieZone".length - 1) {
-          return prevIndex + 1;
-        } else {
-          clearInterval(interval); 
-          return prevIndex;
-        }
-      });
-    }, 300); 
-
-   
-    return () => clearInterval(interval);
-  }, [index]);
-
   return (
     <>
       <BrowserRouter>
-      
-        <nav className="navbar navbar-expand-lg navbar-dark bg-black">
+        {/* Navbar with a dignified design */}
+        <nav
+          className="navbar navbar-expand-lg sticky-top"
+          style={{
+            background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)", // Gradient background
+            color: "white",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Shadow for depth
+          }}
+        >
           <div className="container-fluid">
-         
-            <Link to="/home" className="navbar-brand d-flex align-items-center">
+            {/* Logo and Brand */}
+            <Link to="/" className="navbar-brand d-flex align-items-center">
               <img
                 src={Movieicon}
                 alt="icon"
@@ -44,25 +30,10 @@ function Routers() {
                 width="40"
                 className="rounded me-2"
               />
-             
-              <div style={{ display: "flex", fontSize: "1.5rem" }}>
-                {"MovieZone".split("").map((letter, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      margin: "0 2px",
-                      cursor: "pointer",
-                      transition: "transform 0.3s",
-                      transform: zoomLetter === letter ? "scale(2)" : "scale(1)",
-                      color: zoomLetter === letter ? "red" : "white",
-                    }}
-                  >
-                    {letter}
-                  </span>
-                ))}
-              </div>
+              <div style={{ fontSize: "1.5rem", fontWeight: "bold",color:"wheat"}}>MovieZone</div>
             </Link>
 
+            {/* Navbar Toggler for Mobile */}
             <button
               className="navbar-toggler"
               type="button"
@@ -71,20 +42,39 @@ function Routers() {
               aria-controls="navbarNav"
               aria-expanded="false"
               aria-label="Toggle navigation"
+              style={{ borderColor: "white" }}
             >
-              <span className="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon" style={{ color: "white" }}></span>
             </button>
 
-           
+            {/* Navbar Links */}
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <Link to="/home" className="nav-link">
+                  <Link
+                    to="/"
+                    className="nav-link"
+                    style={{
+                      color: "white",
+                      padding: "10px 15px",
+                      fontSize: "1rem",
+                      fontWeight: "500",
+                    }}
+                  >
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/movies" className="nav-link">
+                  <Link
+                    to="/movies"
+                    className="nav-link"
+                    style={{
+                      color: "white",
+                      padding: "10px 15px",
+                      fontSize: "1rem",
+                      fontWeight: "500",
+                    }}
+                  >
                     Movies
                   </Link>
                 </li>
@@ -93,9 +83,9 @@ function Routers() {
           </div>
         </nav>
 
-        
+        {/* Routes */}
         <Routes>
-          <Route path="/home" element={<Displaycardss />} />
+          <Route path="/" element={<Displaycardss />} />
           <Route path="/movies" element={<Sampes />} />
           <Route path="/movies/:id" element={<MovieDetails />} />
         </Routes>
