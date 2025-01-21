@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import soundEffect from "./button-202966.mp3";
 import { Link } from "react-router-dom";
 import "./sample.css"; // Import custom CSS for styles
+import { Spinner } from "react-bootstrap"; // Import Bootstrap Spinner
 
 function MovieCards() {
   const [movies, setMovies] = useState([]);
@@ -58,7 +59,14 @@ function MovieCards() {
   };
 
   if (loading) {
-    return <p className="loading-text">Loading...</p>;
+    return (
+      <div className="spinner-container">
+        <Spinner animation="border" role="status" className="spinner">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+        {/* <p>Loading movies...</p> */}
+      </div>
+    );
   }
 
   if (error) {
@@ -89,18 +97,16 @@ function MovieCards() {
               onClick={() => handleCardClick(movie.id)}
             >
               <Link to={`/movies/${movie.id}`} className="movie-link">
-              <MaincardSS
-                id={movie.movie_id}
-                movie_name={movie.movie_name}
-                img_name={
-                  movie.img_name.startsWith("http")
-                    ? movie.img_name
-                    : `/images/${movie.img_name}`
-                }
-              />
-
-                </Link>
-             
+                <MaincardSS 
+                  id={movie.movie_id}
+                  movie_name={movie.movie_name}
+                  img_name={
+                    movie.img_name.startsWith("http")
+                      ? movie.img_name
+                      : `/images/${movie.img_name}`
+                  }
+                />
+              </Link>
             </div>
           ))
         ) : (

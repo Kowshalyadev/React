@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Movieicon from "./moviecamera.jpg";
+import Movieicon from "./images.png";
 import Sampes from "./sample";
 import Displaycardss from "./homepage";
 import MovieDetails from "./samplenextpage";
