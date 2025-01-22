@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Spinner } from "react-bootstrap";
 
 function MovieDetails() {
   const { id } = useParams();
@@ -36,6 +38,14 @@ function MovieDetails() {
   }, [id]);
 
   if (loading) {
+    // return (
+    //   <div className="spinner-container text-center text-primary">
+    //     <Spinner animation="border" role="status" className="spinner">
+    //       <span className="visually-hidden">Loading...</span>
+    //     </Spinner>
+    //     {/* <p>Loading movies...</p> */}
+    //   </div>
+    // );
     return <div className="text-center text-primary">Loading...</div>;
   }
 
@@ -47,12 +57,12 @@ function MovieDetails() {
     return <div className="text-center text-warning">Movie not found.</div>;
   }
 
-  const { movie_name, hero_name, img_name,heroine_name, villain_name, genre, rating } = movie;
+  const { movie_name, hero_name, img_name, heroine_name, villain_name, genre, rating } = movie;
 
   return (
     <div
       style={{
-        background: "linear-gradient(135deg, #ffecd2, #fcb69f)", // Gradient background
+        background: "linear-gradient(135deg, #ffecd2,rgb(252, 223, 159))", // Gradient background
         minHeight: "100vh",
         padding: "20px",
       }}
@@ -82,20 +92,22 @@ function MovieDetails() {
                 color: "#495057",
               }}
             >
-              <h2 className="mb-3 text-primary">{movie_name || "Unknown Movie"}</h2>
-              <p>
+              <h2 className="mb-3" style={{ fontSize: "2.5rem",color:"rgb(252, 223, 159)" }}>
+                {movie_name || "Unknown Movie"}
+              </h2>
+              <p style={{ fontSize: "1.2rem" }}>
                 <strong className="text-secondary">Hero Name:</strong> {hero_name || "No information available"}
               </p>
-              <p>
+              <p style={{ fontSize: "1.2rem" }}>
                 <strong className="text-secondary">Heroine Name:</strong> {heroine_name || "Not available"}
               </p>
-              <p>
-                <strong className="text-secondary">villain Name:</strong> {villain_name || "Not available"}
+              <p style={{ fontSize: "1.2rem" }}>
+                <strong className="text-secondary">Villain Name:</strong> {villain_name || "Not available"}
               </p>
-              <p>
-                <strong className="text-secondary">Genre:</strong> {genre || " Movie genres are stylistic categories that organize films based on criteria such as the setting, characters, plot, mood, tone, and theme. "}
+              <p style={{ fontSize: "1.2rem" }}>
+                <strong className="text-secondary">Genre:</strong> {genre || "Genre not specified"}
               </p>
-              <p>
+              <p style={{ fontSize: "1.2rem" }}>
                 <strong className="text-secondary">Rating:</strong> {rating || "5"}
               </p>
             </div>
