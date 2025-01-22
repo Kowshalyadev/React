@@ -1,94 +1,60 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MovieVedio from "./mainVedio";
+import "./homepage.css"; // Importing the CSS file for styling
 
 function Displaycards() {
-  const [showContent, setShowContent] = useState(false);
-
-  // Simulate delay for showing the content
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowContent(true); // After 3 seconds, show the content
-    }, 3000);
-
-    return () => clearTimeout(timer); // Cleanup timer on component unmount
-  }, []);
-
-  const trailers = [
-    "https://www.youtube.com/embed/tgbNymZ7vqY",
-    "https://www.youtube.com/embed/2Vv-BfVoq4g",
-    "https://www.youtube.com/embed/K4TOrB7at0Y",
-  ];
-
   return (
+    <div className="displaycards-container">
+      {/* Main Video */}
+      <MovieVedio />
 
-    // <div
-    //   style={{
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     alignItems: "center",
-    //     justifyContent: "flex-start",
-    //     width: "100%",
-    //     backgroundImage:
-    //       "url('https://img.freepik.com/free-vector/film-stripes-reels-realistic-composition-with-light-glows-golden-figurine-award-with-clapper-bobbin_1284-59002.jpg?ga=GA1.1.764478372.1735580017&semt=ais_hybrid')", // Background image
-    //     backgroundSize: "cover",
-    //     backgroundPosition: "center",
-    //     backgroundRepeat: "no-repeat",
-    //     paddingTop: "80px",
-    //   }}
-    // >
-    //   {/* Text Content */}
-    //   {showContent && (
-    //     <div
-    //       style={{
-    //         backgroundColor: "rgba(0, 0, 0, 0.6)", // Semi-transparent background
-    //         color: "white",
-    //         padding: "20px 40px",
-    //         borderRadius: "10px",
-    //         textAlign: "center",
-    //         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
-    //         marginBottom: "40px", // Gap between text and trailers
-    //       }}
-    //     >
-    //       <h2 style={{ margin: 0 }}>A Cinematic Experience</h2>
-    //       <p style={{ marginTop: "10px" }}>
-    //         Dive into the world of movies and captivating stories.
-    //       </p>
-    //     </div>
-    //   )}
+      {/* Recent Telugu Movie Trailers */}
+      <section className="trailers-section">
+        <h2>Recent Telugu Movie Trailers</h2>
+        <div className="trailers">
+          <iframe
+            title="Trailer 1"
+            width="400"
+            height="225"
+            src="https://www.youtube.com/embed/2OdZfRAwkv8" // Replace with actual trailer URL
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+          <iframe
+            title="Trailer 2"
+            width="400"
+            height="225"
+            src="https://www.youtube.com/embed/XYaOuo2WnMc" // Replace with actual trailer URL
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </section>
 
-    //   {/* Trailer Section */}
-    //   {showContent && (
-    //     <div
-    //       style={{
-    //         display: "grid",
-    //         gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    //         gap: "20px",
-    //         width: "90%", // Adjust width for better spacing
-    //         marginBottom: "40px",
-    //       }}
-    //     >
-    //       {trailers.map((trailer, index) => (
-    //         <iframe
-    //           key={index}
-    //           width="100%"
-    //           height="200px"
-    //           src={trailer}
-    //           title={`Trailer ${index + 1}`}
-    //           frameBorder="0"
-    //           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    //           allowFullScreen
-    //           style={{
-    //             borderRadius: "10px",
-    //             boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
-    //           }}
-    //         ></iframe>
-    //       ))}
-    //     </div>
-        
-    //   )}
-    // </div>
-    <MovieVedio/>
-
+      {/* Contact Details and Social Media */}
+      <footer className="footer">
+        <div className="contact-details">
+          <h3>Contact Us</h3>
+          <p>Email: contact@movieworld.com</p>
+          <p>Phone: +91-9876543210</p>
+          <p>Address: 123, Movie Street, Film City, India</p>
+        </div>
+        <div className="social-media">
+          <h3>Follow Us</h3>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/facebook-logo.png" alt="Facebook" />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/twitter-logo.png" alt="Twitter" />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/instagram-logo.png" alt="Instagram" />
+          </a>
+        </div>
+      </footer>
+    </div>
   );
 }
 
