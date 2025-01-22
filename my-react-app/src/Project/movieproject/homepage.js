@@ -1,6 +1,9 @@
 import React from "react";
+import Instagram from "./instagram.png";
+import Facebook from "./facebook.png";
+import Twitter from "./twitter.png";
 import MovieVedio from "./mainVedio";
-import "./homepage.css"; // Importing the CSS file for styling
+import "./homepage.css";
 
 function Displaycards() {
   return (
@@ -14,21 +17,25 @@ function Displaycards() {
         <div className="trailers">
           <iframe
             title="Trailer 1"
-            width="400"
-            height="225"
-            src="https://www.youtube.com/embed/2OdZfRAwkv8" // Replace with actual trailer URL
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
+            className="trailer-frame"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/MFKdqXk6XIQ?si=c8eRpve40CCIHWKE"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
           ></iframe>
           <iframe
             title="Trailer 2"
-            width="400"
-            height="225"
-            src="https://www.youtube.com/embed/XYaOuo2WnMc" // Replace with actual trailer URL
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
+            className="trailer-frame"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/RlRpN1Fa9Wo?si=jqxQgXfHEB5qNM5j"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
           ></iframe>
         </div>
       </section>
@@ -42,18 +49,46 @@ function Displaycards() {
           <p>Address: 123, Movie Street, Film City, India</p>
         </div>
         <div className="social-media">
-          <h3>Follow Us</h3>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/facebook-logo.png" alt="Facebook" />
+          <h2>Follow Us</h2>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={Facebook} alt="Facebook" className="social-icon" />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/twitter-logo.png" alt="Twitter" />
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={Twitter} alt="Twitter" className="social-icon" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/instagram-logo.png" alt="Instagram" />
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={Instagram} alt="Instagram" className="social-icon" />
           </a>
         </div>
       </footer>
+
+      {/* Thank You Message with Confetti */}
+      <div className="thank-you-container">
+        <h2 className="thank-you-message">Thank You for Visiting!</h2>
+        <div className="confetti">
+          <div className="confetti-piece" style={{ left: '10%' }}></div>
+          <div className="confetti-piece" style={{ left: '20%' }}></div>
+          <div className="confetti-piece" style={{ left: '30%' }}></div>
+          <div className="confetti-piece" style={{ left: '40%' }}></div>
+          <div className="confetti-piece" style={{ left: '50%' }}></div>
+          <div className="confetti-piece" style={{ left: '60%' }}></div>
+          <div className="confetti-piece" style={{ left: '70%' }}></div>
+          <div className="confetti-piece" style={{ left: '80%' }}></div>
+          <div className="confetti-piece" style={{ left: '90%' }}></div>
+        </div>
+      </div>
     </div>
   );
 }
