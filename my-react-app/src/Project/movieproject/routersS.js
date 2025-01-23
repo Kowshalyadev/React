@@ -35,8 +35,8 @@ function Navbar() {
             width="40"
             className="rounded me-2"
           />
-          <div style={{ fontSize: "1.5rem", fontWeight: "bold", color: "wheat" }}>
-            MovieZone
+          <div style={{ fontSize: "1.5rem", color: "white" }}>
+            Movie World
           </div>
         </Link>
 
