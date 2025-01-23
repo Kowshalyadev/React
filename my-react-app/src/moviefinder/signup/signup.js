@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../fbconfig";
 import "./signup.css"; // Importing external CSS file for styling
 
-function Signup() {
+function Signup1() {
   const signUpDoneWithFb = getAuth(app);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -18,16 +18,20 @@ function Signup() {
       return;
     }
     try {
-      let a = await createUserWithEmailAndPassword(signUpDoneWithFb, email, pswd);
-      alert("Signup successful");
-      console.log(a);
+      await createUserWithEmailAndPassword(signUpDoneWithFb, email, pswd);
       navigate("/login");
       setEmail("");
       setPswd("");
       setError("");
     } catch (err) {
       console.log(err);
-      setError(err.message);
+      if (err.code === "auth/email-already-in-use") {
+        setError(
+          "Email already exists. Click here to login."
+        );
+      } else {
+        setError(err.message);
+      }
     }
   };
 
@@ -35,7 +39,24 @@ function Signup() {
     <div className="signup-container">
       <h1 className="signup-title">Signup</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
-        {error && <p className="error-message">{error}</p>}
+        {error && (
+          <p className="error-message">
+            {error.includes("Click here") ? (
+              <>
+                Email already exists.{" "}
+                <span
+                  className="login-link"
+                  onClick={() => navigate("/login")}
+                  style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}
+                >
+                  Click here to login.
+                </span>
+              </>
+            ) : (
+              error
+            )}
+          </p>
+        )}
         <input
           type="email"
           placeholder="Enter email here"
@@ -62,4 +83,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Signup1;

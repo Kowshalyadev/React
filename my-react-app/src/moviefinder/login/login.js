@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "./login.css"; // External CSS for styling
 
 function Login() {
-  let route = useNavigate();
-  let loginWithFb = getAuth(app);
+  const navigate = useNavigate(); // Correctly use `useNavigate` for navigation
+  const loginWithFb = getAuth(app);
   const [email, setEmail] = useState("");
   const [pswd, setPswd] = useState("");
   const [error, setError] = useState("");
@@ -19,18 +19,17 @@ function Login() {
     }
 
     try {
-      let loginSuccess = await signInWithEmailAndPassword(loginWithFb, email, pswd);
+      const loginSuccess = await signInWithEmailAndPassword(loginWithFb, email, pswd);
       if (loginSuccess) {
         alert("Logged in successfully");
-        route("/");
-        console.log(loginSuccess);
+        navigate("/dashboard"); // Navigate to the `/dashboard` route
         setEmail("");
         setPswd("");
         setError("");
       }
     } catch (err) {
-      console.log(err);
-      setError(err.message);
+      console.error(err);
+      setError("Failed to login. Please check your credentials.");
     }
   };
 

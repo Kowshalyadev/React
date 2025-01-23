@@ -39,13 +39,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import Displaycards from './Project/movieproject/moviefinderdata';
 // import Displaycardss from './Project/movieproject/duplicatedata';
 // import Sampes from './Project/movieproject/sample';
-import AllRouterss from './Project/movieproject/routers';
+import AllRouterss from './Project/movieproject/routersS.js';
 // import MovieVedio from './Project/movieproject/mainVedio';
 // import MovierFinderApp from './Project/movieproject/frontpages';
 // import MovieDetails from './Project/movieproject/samplenextpage';
-// import Signup from './Project/movieproject/signupPage';
+// import Signup1 from './moviefinder/signup/signup';
 // import MovierFinderApps from './moviefinder/signLoginroutes/signLoginroute';
-
+// import Login from './moviefinder/login/login';
 // const data=
 // [
 //   {
@@ -241,7 +241,7 @@ root.render(
    {/* <MovieDetails/> */}
    {/* <Login/> */}
    {/* <MovierFinderApps/> */}
-   {/* <Signup/> */}
+   {/* <Signup1/> */}
   </React.StrictMode>
 );
 

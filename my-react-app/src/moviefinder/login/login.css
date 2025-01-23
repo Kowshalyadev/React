@@ -7,7 +7,7 @@
     justify-content: center;
     height: 100vh;
     width: 100vw; /* Ensures full viewport width */
-    background-image: url("https://www.shutterstock.com/image-vector/abstract-background-white-frame-movie-260nw-75100402.jpg");
+    background-image: url("https://img.freepik.com/free-vector/shiny-film-negative-cinema-background-with-text-space_1017-52787.jpg?t=st=1737614221~exp=1737617821~hmac=d7acdfcd08ece47fd97f29d48143607c246f00d4fdaf2a834c2d317f348c3a42&w=1060");
     background-size: cover; /* Ensures the image covers the entire screen */
     background-position: center; /* Keeps the focal point centered */
     background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -27,7 +27,8 @@
     gap: 15px;
     width: 100%;
     max-width: 400px;
-    background: rgba(255, 255, 255, 0.85); /* Transparent white background */
+    background: rgba(0, 0, 0, 0.6);
+    /* background: rgba(255, 255, 255, 0.85); Transparent white background */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -37,7 +38,9 @@
     padding: 10px 15px;
     font-size: 1rem;
     border: 1px solid #ccc;
+    color: wheat;
     border-radius: 4px;
+    background: rgba(0, 0, 0, 0.6);
   }
   
   .login-input:focus {
