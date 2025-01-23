@@ -35,6 +35,10 @@ function Signup1() {
     }
   };
 
+  const handleGuestMode = () => {
+    navigate("/dashboard"); // Redirect to the guest dashboard or a similar page
+  };
+
   return (
     <div className="signup-container">
       <h1 className="signup-title">Signup</h1>
@@ -79,6 +83,19 @@ function Signup1() {
           Signup
         </button>
       </form>
+      <button
+        className="guest-button"
+        onClick={handleGuestMode}
+        style={{
+          marginTop: "20px",
+          padding: "10px 20px",
+          backgroundColor: "#f0f0f0",
+          border: "1px solid #ccc",
+          cursor: "pointer",
+        }}
+      >
+        Continue as Guest
+      </button>
     </div>
   );
 }
