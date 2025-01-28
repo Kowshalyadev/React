@@ -92,23 +92,23 @@ function MovieDetails() {
                 color: "#495057",
               }}
             >
-              <h2 className="mb-3" style={{ fontSize: "2.5rem",color:"rgb(252, 223, 159)" }}>
+              <h2 className="mb-3" style={{ fontSize: "2.5rem",color:"rgb(222, 161, 29)",display:"flex",justifyContent:"center" }}>
                 {movie_name || "Unknown Movie"}
               </h2>
-              <p style={{ fontSize: "1.2rem" }}>
-                <strong className="text-secondary">Hero Name:</strong> {hero_name || "No information available"}
+              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)"}}>
+                <strong style={{color:"black"}}>Hero Name:</strong> {hero_name || "No information available"}
               </p>
-              <p style={{ fontSize: "1.2rem" }}>
-                <strong className="text-secondary">Heroine Name:</strong> {heroine_name || "Not available"}
+              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)" }}>
+                <strong style={{color:"black"}}>Heroine Name:</strong> {heroine_name || "Not available"}
               </p>
-              <p style={{ fontSize: "1.2rem" }}>
-                <strong className="text-secondary">Villain Name:</strong> {villain_name || "Not available"}
+              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)" }}>
+                <strong style={{color:"black"}}>Villain Name:</strong> {villain_name || "Not available"}
               </p>
-              <p style={{ fontSize: "1.2rem" }}>
-                <strong className="text-secondary">Genre:</strong> {genre || "Genre not specified"}
+              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)" }}>
+                <strong style={{color:"black"}}>Genre:</strong> {genre || "Genre not specified"}
               </p>
-              <p style={{ fontSize: "1.2rem" }}>
-                <strong className="text-secondary">Rating:</strong> {rating || "5"}
+              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)" }}>
+                <strong style={{color:"black"}}>Rating:</strong> {rating || "5"}
               </p>
             </div>
           </div>

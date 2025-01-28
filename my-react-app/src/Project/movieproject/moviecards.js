@@ -11,7 +11,7 @@ function MaincardSS({  movie_name, img_name, id }) {
         height="190"
       />
       <Card.Body>
-        <Card.Text style={{fontSize:"17px"}}><strong>Title:</strong> {movie_name || "Unknown Movie"}</Card.Text>
+        <Card.Text style={{fontSize:"17px",color:"orange"}}><strong style={{color:"black"}}>Title:</strong> {movie_name || "Unknown Movie"}</Card.Text>
         {/* <Card.Text>
           <strong>Hero Name:</strong> {hero_name || "No information available"}
         </Card.Text> */}
