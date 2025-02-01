@@ -62,13 +62,26 @@ function MovieDetails() {
   return (
     <div
       style={{
-        background: "linear-gradient(135deg, #ffecd2,rgb(252, 223, 159))", // Gradient background
+        // background: "linear-gradient(135deg, #ffecd2,rgb(252, 223, 159))", 
+        backgroundColor:"black",
         minHeight: "100vh",
         padding: "20px",
       }}
     >
       <div className="container py-4">
-        <div className="row align-items-center bg-light shadow rounded p-4">
+      <div
+  className="row align-items-center  shadow rounded p-4"
+  style={{
+    // border: "2px solid transparent",
+    // borderColor:"white",
+    border: "1px solid #ffffff",
+    backgroundColor:"black",
+    // borderImage: "linear-gradient(45deg,rgb(222, 161, 29), #ffffff) 1", // Yellow & White gradient
+    boxShadow: "0px 4px 6px #ffffff"
+  }}
+>
+
+        {/* <div className="row align-items-center bg-drak shadow rounded p-4" style={{border:"2px solid white"}}> */}
           {/* Left Column: Image */}
           <div className="col-md-6 text-center">
             <img
@@ -78,7 +91,7 @@ function MovieDetails() {
               style={{
                 maxHeight: "400px",
                 objectFit: "cover",
-                border: "5px solid #6c757d",
+                border: "1px solid rgb(148, 116, 99)",
               }}
             />
           </div>
@@ -92,23 +105,23 @@ function MovieDetails() {
                 color: "#495057",
               }}
             >
-              <h2 className="mb-3" style={{ fontSize: "2.5rem",color:"rgb(222, 161, 29)",display:"flex",justifyContent:"center" }}>
+              <h2 className="mb-3" style={{ fontSize: "2rem",color:"rgb(222, 161, 29)",display:"flex",justifyContent:"center" }}>
                 {movie_name || "Unknown Movie"}
               </h2>
-              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)"}}>
-                <strong style={{color:"black"}}>Hero Name:</strong> {hero_name || "No information available"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)"}}>
+                <span style={{color:"black"}}>Hero Name:</span> {hero_name || "No information available"}
               </p>
-              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)" }}>
-                <strong style={{color:"black"}}>Heroine Name:</strong> {heroine_name || "Not available"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)" }}>
+                <span style={{color:"black"}}>Heroine Name:</span> {heroine_name || "Not available"}
               </p>
-              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)" }}>
-                <strong style={{color:"black"}}>Villain Name:</strong> {villain_name || "Not available"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)" }}>
+                <span style={{color:"black"}}>Villain Name:</span> {villain_name || "Not available"}
               </p>
-              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)" }}>
-                <strong style={{color:"black"}}>Genre:</strong> {genre || "Genre not specified"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)" }}>
+                <span style={{color:"black"}}>Genre:</span> {genre || "Genre not specified"}
               </p>
-              <p style={{ fontSize: "1.2rem",color:"rgb(222, 161, 29)" }}>
-                <strong style={{color:"black"}}>Rating:</strong> {rating || "5"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)" }}>
+                <span style={{color:"black"}}>Rating:</span> {rating || "5"}
               </p>
             </div>
           </div>

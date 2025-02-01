@@ -1,6 +1,8 @@
 import React from "react";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
-import Movieicon from "./images.png";
+import Movieicon from "./reellogo.png";
 import Sampes from "./sample";
 import Displaycardss from "./homepage";
 import MovieDetails from "./samplenextpage";
@@ -11,6 +13,17 @@ import Login from "../../moviefinder/login/login";
 
 function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      navigate("/login"); // Redirect to login page after signing out
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
   const hiddenRoutes = ["/", "/login"]; // Routes where the navbar should be hidden
 
   if (hiddenRoutes.includes(location.pathname)) {
@@ -82,6 +95,11 @@ function Navbar() {
               >
                 Movies
               </Link>
+            </li>
+            <li className="nav-item">
+              <button onClick={handleSignOut} className="nav-link btn btn-link" style={{ color: "white", padding: "10px 15px", fontSize: "1rem", fontWeight: "500", border: "none", background: "none" }}>
+                Sign Out
+              </button>
             </li>
           </ul>
         </div>

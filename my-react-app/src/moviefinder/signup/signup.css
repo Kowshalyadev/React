@@ -80,4 +80,23 @@
       font-size: 0.9rem;
     }
   }
+  .password-container {
+    position: relative;
+  }
+  
+  .signup-input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* To leave space for the toggle icon */
+    box-sizing: border-box;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    right: 10px; /* Position the icon inside the input */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
   
