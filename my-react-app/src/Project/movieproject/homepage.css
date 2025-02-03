@@ -3,7 +3,7 @@
   font-family: Arial, sans-serif;
   margin: 20px;
   text-align: center;
-  background-color: #f4f4f4;
+  background-color: black;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -12,7 +12,8 @@
 /* Trailers section */
 .trailers-section {
   margin: 20px 0;
-  background-color: #ffffff;
+  background-color: black;
+  border: 1px solid white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -21,7 +22,7 @@
 .trailers-section h2 {
   font-size: 20px;
   margin-bottom: 15px;
-  color: #333;
+  color: white;
 }
 
 .trailers {

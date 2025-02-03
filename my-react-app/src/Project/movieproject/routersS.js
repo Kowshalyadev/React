@@ -9,7 +9,7 @@ import MovieDetails from "./samplenextpage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Signup1 from "../../moviefinder/signup/signup";
-import Login from "../../moviefinder/login/login";
+// import Login from "../../moviefinder/login/login";
 
 function Navbar() {
   const location = useLocation();
@@ -19,7 +19,7 @@ function Navbar() {
   const handleSignOut = async () => {
     try {
       await signOut(auth);
-      navigate("/login"); // Redirect to login page after signing out
+      navigate("/"); // Redirect to login page after signing out
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -114,7 +114,7 @@ function AllRouterss() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Signup1 />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/dashboard" element={<Displaycardss />} />
         <Route path="/movies" element={<Sampes />} />
         <Route path="/movies/:id" element={<MovieDetails />} />

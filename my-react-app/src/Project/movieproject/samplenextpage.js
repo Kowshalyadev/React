@@ -103,25 +103,28 @@ function MovieDetails() {
               style={{
                 background: "#fff",
                 color: "#495057",
+                // fontSize: "0.5rem", 
+                // fontFamily: "Roboto"
               }}
             >
               <h2 className="mb-3" style={{ fontSize: "2rem",color:"rgb(222, 161, 29)",display:"flex",justifyContent:"center" }}>
                 {movie_name || "Unknown Movie"}
               </h2>
-              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)"}}>
-                <span style={{color:"black"}}>Hero Name:</span> {hero_name || "No information available"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)", 
+                fontFamily: "Roboto"}}>
+                <strong style={{color:"black", fontSize: "1rem", fontFamily: "Roboto"}}>Hero Name:</strong> {hero_name || "No information available"}
               </p>
-              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)" }}>
-                <span style={{color:"black"}}>Heroine Name:</span> {heroine_name || "Not available"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)",fontFamily: "Roboto" }}>
+                <strong  style={{color:"black", fontSize: "1rem", fontFamily: "Roboto"}}>Heroine Name:</strong > {heroine_name || "Not available"}
               </p>
-              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)" }}>
-                <span style={{color:"black"}}>Villain Name:</span> {villain_name || "Not available"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)",fontFamily: "Roboto" }}>
+                <strong  style={{color:"black", fontSize: "1rem", fontFamily: "Roboto"}}>Villain Name:</strong > {villain_name || "Not available"}
               </p>
-              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)" }}>
-                <span style={{color:"black"}}>Genre:</span> {genre || "Genre not specified"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)",fontFamily: "Roboto" }}>
+                <strong  style={{color:"black", fontSize: "1rem", fontFamily: "Roboto"}}>Genre:</strong > {genre || "Genre not specified"}
               </p>
-              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)" }}>
-                <span style={{color:"black"}}>Rating:</span> {rating || "5"}
+              <p style={{ fontSize: "1rem",color:"rgb(222, 161, 29)",fontFamily: "Roboto" }}>
+                <strong  style={{color:"black", fontSize: "1rem", fontFamily: "Roboto"}}>Rating:</strong > {rating || "5"}
               </p>
             </div>
           </div>
