@@ -49,7 +49,7 @@ function Displaycards() {
           <p>Address: 123, Movie Street, Film City, India</p>
         </div>
         <div className="social-media">
-          <h2>Follow Us</h2>
+          <h2 id="follow-us-text">Follow Us</h2>
           <a
             href="https://facebook.com"
             target="_blank"
