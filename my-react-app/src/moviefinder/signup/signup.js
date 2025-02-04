@@ -321,6 +321,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signInAnonymously,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
@@ -343,11 +344,11 @@ function Signup1() {
   const [rotate, setRotate] = useState(false);
 
   useEffect(() => {
-    setError(""); 
+    setError("");
     setEmail("");
     setPassword("");
     setConfirmPassword("");
-    emailRef.current?.focus(); 
+    emailRef.current?.focus();
   }, [isSignup]);
 
   const validatePassword = (password) => {
@@ -356,26 +357,22 @@ function Signup1() {
     return pattern.test(password);
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); 
+    setError("");
     setLoading(true);
 
-    
     if (!email || !password || (isSignup && !confirmPassword)) {
       setError("Please fill in all fields.");
       setLoading(false);
       return;
     }
 
-    
     if (isSignup && password !== confirmPassword) {
       setError("Passwords do not match.");
       setLoading(false);
       return;
     }
-
 
     if (isSignup && !validatePassword(password)) {
       setError(
@@ -387,7 +384,6 @@ function Signup1() {
 
     try {
       if (isSignup) {
-      
         await createUserWithEmailAndPassword(auth, email, password);
         setIsSignup(false); // Switch to Login form
         setEmail("");
@@ -399,9 +395,8 @@ function Signup1() {
         navigate("/dashboard");
       }
     } catch (err) {
-      console.error(err); 
+      console.error(err);
 
-      
       if (err.code === "auth/invalid-credential") {
         setError("Invalid credentials provided/password incorrect.");
       } else if (err.code === "auth/user-not-found") {
@@ -420,11 +415,16 @@ function Signup1() {
     }
   };
 
-  const handleGuestLogin = () => {
-    navigate("/dashboard");
+  const handleGuestLogin = async () => {
+    try {
+      await signInAnonymously(auth);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Guest login error:", error.message);
+      setError(error.message); // Display the exact error message
+    }
   };
 
- 
   const handleToggle = () => {
     setRotate(!rotate);
     setIsSignup(!isSignup); // Switch between signup and login
@@ -449,17 +449,20 @@ function Signup1() {
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="auths-input" 
+            className="auths-input"
             required
           />
 
-          <div className="password-container" style={{ fontSize: "1rem", fontFamily: "Roboto" }}>
+          <div
+            className="password-container"
+            style={{ fontSize: "1rem", fontFamily: "Roboto" }}
+          >
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="auth-input" 
+              className="auth-input"
               required
             />
             <span onClick={() => setShowPassword(!showPassword)}>
@@ -468,7 +471,10 @@ function Signup1() {
           </div>
 
           {isSignup && (
-            <div className="password-container" style={{ fontSize: "1rem", fontFamily: "Roboto" }}>
+            <div
+              className="password-container"
+              style={{ fontSize: "1rem", fontFamily: "Roboto" }}
+            >
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm password"
@@ -491,7 +497,6 @@ function Signup1() {
           </button>
         </form>
 
-       
         <button
           onClick={handleGuestLogin}
           className="guest-button"
@@ -500,7 +505,6 @@ function Signup1() {
           Guest Login
         </button>
 
-        
         <p
           onClick={handleToggle}
           className="toggle-auth"

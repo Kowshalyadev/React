@@ -1,7 +1,7 @@
-import React from "react";
-import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { useNavigate, BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
+import { auth } from "../../ptroutes"; // Ensure this path is correct
 import Movieicon from "./reellogo.png";
 import Sampes from "./sample";
 import Displaycardss from "./homepage";
@@ -9,7 +9,8 @@ import MovieDetails from "./samplenextpage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Signup1 from "../../moviefinder/signup/signup";
-// import Login from "../../moviefinder/login/login";
+import PrivateRoute from "./privateRoutes";
+import DisableBackButton from "./disableback";
 
 function Navbar() {
   const location = useLocation();
@@ -24,10 +25,10 @@ function Navbar() {
       console.error("Error signing out:", error);
     }
   };
-  const hiddenRoutes = ["/", "/login"]; // Routes where the navbar should be hidden
 
+  const hiddenRoutes = ["/", "/login"]; // Routes where the navbar should be hidden
   if (hiddenRoutes.includes(location.pathname)) {
-    return null; // Return null to not render the navbar
+    return null; // Hide navbar on login/signup pages
   }
 
   return (
@@ -41,16 +42,8 @@ function Navbar() {
     >
       <div className="container-fluid">
         <Link to="/" className="navbar-brand d-flex align-items-center">
-          <img
-            src={Movieicon}
-            alt="icon"
-            height="40"
-            width="40"
-            className="rounded me-2"
-          />
-          <div style={{ fontSize: "1.5rem", color: "white" }}>
-            Movie World
-          </div>
+          <img src={Movieicon} alt="icon" height="40" width="40" className="rounded me-2" />
+          <div style={{ fontSize: "1.5rem", color: "white" }}>Movie World</div>
         </Link>
 
         <button
@@ -69,30 +62,12 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link
-                to="/dashboard"
-                className="nav-link"
-                style={{
-                  color: "white",
-                  padding: "10px 15px",
-                  fontSize: "1rem",
-                  fontWeight: "500",
-                }}
-              >
+              <Link to="/dashboard" className="nav-link" style={{ color: "white", padding: "10px 15px", fontSize: "1rem", fontWeight: "500" }}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/movies"
-                className="nav-link"
-                style={{
-                  color: "white",
-                  padding: "10px 15px",
-                  fontSize: "1rem",
-                  fontWeight: "500",
-                }}
-              >
+              <Link to="/movies" className="nav-link" style={{ color: "white", padding: "10px 15px", fontSize: "1rem", fontWeight: "500" }}>
                 Movies
               </Link>
             </li>
@@ -108,13 +83,32 @@ function Navbar() {
   );
 }
 
+
+
+
 function AllRouterss() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, () => {
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <BrowserRouter>
       <Navbar />
+      <DisableBackButton /> {/* ✅ Fix: Placed outside <Routes> */}
       <Routes>
         <Route path="/" element={<Signup1 />} />
         {/* <Route path="/login" element={<Login />} /> */}
+        <Route element={<PrivateRoute />} />
         <Route path="/dashboard" element={<Displaycardss />} />
         <Route path="/movies" element={<Sampes />} />
         <Route path="/movies/:id" element={<MovieDetails />} />

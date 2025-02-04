@@ -2,13 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth, setPersistence, browserSessionPersistence } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCStSONl8XnMh4ekt55vrwi1n_4jByUjtA",
+  authDomain: "ptroutes-7412f.firebaseapp.com",
+  projectId: "ptroutes-7412f",
+  storageBucket: "ptroutes-7412f.firebasestorage.app",
+  messagingSenderId: "832163035529",
+  appId: "1:832163035529:web:60398f175340408d05c958",
+  measurementId: "G-CYSW83NG6K"
 };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
